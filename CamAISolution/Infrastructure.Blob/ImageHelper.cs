@@ -16,6 +16,11 @@ public static class ImageHelper
 
     public static Stream Resize(string physicalPath, int? width, int? height, float scaleFactor = 1)
     {
+        if (!width.HasValue && !height.HasValue && Math.Abs(scaleFactor - 1f) < 0.000000001)
+        {
+            var file = File.OpenRead(physicalPath);
+            return file;
+        }
         InitiateSkImage(out var bitmap, out var imageInfo, physicalPath, null, scaleFactor, width, height);
         using var resizedBitmap = bitmap.Resize(imageInfo, SKFilterQuality.Low);
         using var image = SKImage.FromBitmap(resizedBitmap);

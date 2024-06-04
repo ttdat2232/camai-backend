@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Core.Domain.Services;
-using Host.CamAI.API.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Host.CamAI.API.Controllers;
